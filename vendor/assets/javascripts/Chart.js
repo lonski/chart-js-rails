@@ -939,7 +939,7 @@
 			}
 			if (ChartElements.length > 0){
 				// If we have multiple datasets, show a MultiTooltip for all of the data points at that index
-				if (this.datasets && this.datasets.length > 1) {
+				if ( !this.options.singleBarSelection && this.datasets && this.datasets.length > 1) {
 					var dataArray,
 						dataIndex;
 
@@ -2187,9 +2187,22 @@
 				barIndex;
 
 			for (var datasetIndex = 0; datasetIndex < this.datasets.length; datasetIndex++) {
+				barIndex = 0;
 				for (barIndex = 0; barIndex < this.datasets[datasetIndex].bars.length; barIndex++) {
 					if (this.datasets[datasetIndex].bars[barIndex].inRange(eventPosition.x,eventPosition.y)){
-						helpers.each(this.datasets, datasetIterator);
+
+						if ( this.options.singleBarSelection )
+						{
+							var dataset = this.datasets[datasetIndex];
+							var bar = dataset.bars[barIndex];
+							bar.datasetLabel = dataset.label;
+
+							barsArray.push(bar);
+						}
+						else
+						{
+							helpers.each(this.datasets, datasetIterator);
+						}
 						return barsArray;
 					}
 				}
@@ -2197,6 +2210,7 @@
 
 			return barsArray;
 		},
+
 		buildScale : function(labels){
 			var self = this;
 
