@@ -2137,6 +2137,7 @@
 						value : dataPoint,
 						label : data.labels[index],
 						datasetLabel: dataset.label,
+						bar_id: dataset.id,
 						strokeColor : dataset.strokeColor,
 						fillColor : dataset.fillColor,
 						highlightFill : dataset.highlightFill || dataset.fillColor,
