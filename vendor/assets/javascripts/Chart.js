@@ -2098,18 +2098,19 @@
 
 			//Set up tooltip events on the chart
 			if (this.options.showTooltips){
-				helpers.bindEvents(this, this.options.tooltipEvents, function(evt){
-					var activeBars = (evt.type !== 'mouseout') ? this.getBarsAtEvent(evt) : [];
+				this.showTooltip(this.dataset.bars);
+				// helpers.bindEvents(this, this.options.tooltipEvents, function(evt){
+				// 	var activeBars = (evt.type !== 'mouseout') ? this.getBarsAtEvent(evt) : [];
 
-					this.eachBars(function(bar){
-						bar.restore(['fillColor', 'strokeColor']);
-					});
-					helpers.each(activeBars, function(activeBar){
-						activeBar.fillColor = activeBar.highlightFill;
-						activeBar.strokeColor = activeBar.highlightStroke;
-					});
-					this.showTooltip(activeBars);
-				});
+				// 	this.eachBars(function(bar){
+				// 		bar.restore(['fillColor', 'strokeColor']);
+				// 	});
+				// 	helpers.each(activeBars, function(activeBar){
+				// 		activeBar.fillColor = activeBar.highlightFill;
+				// 		activeBar.strokeColor = activeBar.highlightStroke;
+				// 	});
+				// 	this.showTooltip(activeBars);
+				// });
 			}
 
 			//Declare the extension of the default point, to cater for the options passed in to the constructor
