@@ -2096,23 +2096,6 @@
 
 			this.datasets = [];
 
-			//Set up tooltip events on the chart
-			if (this.options.showTooltips){
-				this.showTooltip(this.dataset.bars);
-				// helpers.bindEvents(this, this.options.tooltipEvents, function(evt){
-				// 	var activeBars = (evt.type !== 'mouseout') ? this.getBarsAtEvent(evt) : [];
-
-				// 	this.eachBars(function(bar){
-				// 		bar.restore(['fillColor', 'strokeColor']);
-				// 	});
-				// 	helpers.each(activeBars, function(activeBar){
-				// 		activeBar.fillColor = activeBar.highlightFill;
-				// 		activeBar.strokeColor = activeBar.highlightStroke;
-				// 	});
-				// 	this.showTooltip(activeBars);
-				// });
-			}
-
 			//Declare the extension of the default point, to cater for the options passed in to the constructor
 			this.BarClass = Chart.Rectangle.extend({
 				strokeWidth : this.options.barStrokeWidth,
@@ -2160,6 +2143,22 @@
 				bar.save();
 			}, this);
 
+			//Set up tooltip events on the chart
+			if (this.options.showTooltips){
+				this.showTooltip(this.dataset.bars);
+				// helpers.bindEvents(this, this.options.tooltipEvents, function(evt){
+				// 	var activeBars = (evt.type !== 'mouseout') ? this.getBarsAtEvent(evt) : [];
+
+				// 	this.eachBars(function(bar){
+				// 		bar.restore(['fillColor', 'strokeColor']);
+				// 	});
+				// 	helpers.each(activeBars, function(activeBar){
+				// 		activeBar.fillColor = activeBar.highlightFill;
+				// 		activeBar.strokeColor = activeBar.highlightStroke;
+				// 	});
+				// 	this.showTooltip(activeBars);
+				// });
+			}
 			this.render();
 		},
 		update : function(){
