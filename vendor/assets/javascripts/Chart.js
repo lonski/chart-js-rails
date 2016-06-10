@@ -2098,7 +2098,6 @@
 
 			//Set up tooltip events on the chart
 			if (this.options.showTooltips){
-				this.showTooltip(this.dataset.bars);
 				 helpers.bindEvents(this, this.options.tooltipEvents, function(evt){
 				 	var activeBars = (evt.type !== 'mouseout') ? this.getBarsAtEvent(evt) : [];
 
